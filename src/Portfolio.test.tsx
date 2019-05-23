@@ -2,9 +2,10 @@ import * as enzyme from "enzyme";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Contact from "./Contact/Contact";
+import GitHub from "./GitHub/GitHub";
 import Home from "./Home/Home";
 import Portfolio from "./Portfolio";
-import GitHub from "./GitHub/GitHub";
 
 describe("Portfolio component", () => {
   it("renders without crashing", () => {
@@ -28,5 +29,11 @@ describe("Portfolio component", () => {
     const portfolio = enzyme.shallow(<Portfolio/>);
     const router = portfolio.find(Router);
     expect(router.containsMatchingElement(<Route path="/github" component={GitHub}/>)).toBe(true);
+  });
+
+  it("renders Contact component at '/contact' path", () => {
+    const portfolio = enzyme.shallow(<Portfolio/>);
+    const router = portfolio.find(Router);
+    expect(router.containsMatchingElement(<Route path="/contact" component={Contact}/>)).toBe(true);
   });
 });
