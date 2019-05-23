@@ -5,6 +5,7 @@ export default () => {
     return (
         <header>
             <NavLink to="/">Home</NavLink>
+            <NavLink to="/github">GitHub</NavLink>
         </header>
     );
 };
