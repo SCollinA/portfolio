@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Contact from "./Contact/Contact";
 import GitHub from "./GitHub/GitHub";
 import Home from "./Home/Home";
+import NavBar from "./NavBar/NavBar";
 import Portfolio from "./Portfolio";
 
 describe("Portfolio component", () => {
@@ -14,7 +15,7 @@ describe("Portfolio component", () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it("has a router as a child", () => {
+  it("has a router as a parent", () => {
     const portfolio = enzyme.shallow(<Portfolio/>);
     expect(portfolio.find(Router).exists()).toBe(true);
   });
@@ -35,5 +36,11 @@ describe("Portfolio component", () => {
     const portfolio = enzyme.shallow(<Portfolio/>);
     const router = portfolio.find(Router);
     expect(router.containsMatchingElement(<Route path="/contact" component={Contact}/>)).toBe(true);
+  });
+
+  it("renders NavBar component on all paths", () => {
+    const portfolio = enzyme.shallow(<Portfolio/>);
+    const router = portfolio.find(Router);
+    expect(router.containsMatchingElement(<Route path="/" component={NavBar}/>)).toBe(true);
   });
 });
