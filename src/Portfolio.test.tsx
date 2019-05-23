@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Home/Home";
 import Portfolio from "./Portfolio";
+import GitHub from "./GitHub/GitHub";
 
 describe("Portfolio component", () => {
   it("renders without crashing", () => {
@@ -23,4 +24,9 @@ describe("Portfolio component", () => {
     expect(router.containsMatchingElement(<Route path="/" component={Home}/>)).toBe(true);
   });
 
+  it("renders GitHub component at '/github' path", () => {
+    const portfolio = enzyme.shallow(<Portfolio/>);
+    const router = portfolio.find(Router);
+    expect(router.containsMatchingElement(<Route path="/github" component={GitHub}/>)).toBe(true);
+  });
 });
