@@ -1,13 +1,14 @@
 import React from "react";
 import "./Portfolio.css";
-import { BrowserRouter as Route, Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
+import Home from "./Home/Home";
 
 const Portfolio: React.FC = () => {
   return (
     <div className="Portfolio">
-      <Router history={createBrowserHistory()}>
-        <Route/>
+      <Router>
+        <Route path="/" component={Home}/>
       </Router>
     </div>
   );
