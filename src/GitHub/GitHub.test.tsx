@@ -7,4 +7,10 @@ describe("GitHub component", () => {
         const github = enzyme.shallow(<GitHub/>);
         expect(github.exists()).toBe(true);
     });
+
+    it("renders an h1 as only child", () => {
+        const github = enzyme.shallow(<GitHub/>);
+        expect(github.getElements().length).toBe(1);
+        expect(github.childAt(0).is("h1")).toBe(true);
+    });
 });
