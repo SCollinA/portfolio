@@ -5,5 +5,5 @@ export default () => {
         <div className="Contact">
             <h1>Hello Contact!</h1>
         </div>
-    )
-}
+    );
+};
