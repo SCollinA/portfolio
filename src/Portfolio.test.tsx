@@ -1,9 +1,9 @@
+import * as enzyme from "enzyme";
 import React from "react";
 import ReactDOM from "react-dom";
-import * as enzyme from "enzyme";
-import Portfolio from "./Portfolio";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Home/Home";
+import Portfolio from "./Portfolio";
 
 describe("Portfolio component", () => {
   it("renders without crashing", () => {
@@ -20,9 +20,7 @@ describe("Portfolio component", () => {
   it("renders Home component at '/' path", () => {
     const portfolio = enzyme.shallow(<Portfolio/>);
     const router = portfolio.find(Router);
-    expect(router.findWhere(a => {
-      return a.prop("path") === "/" &&
-        a.prop("component") === Home;
-      }).exists()).toBe(true);
+    expect(router.containsMatchingElement(<Route path="/" component={Home}/>)).toBe(true);
   });
+
 });
