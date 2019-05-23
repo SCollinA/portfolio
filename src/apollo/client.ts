@@ -4,7 +4,7 @@ import {
     ApolloLink,
     // split
 } from "apollo-link";
-// import { setContext } from "apollo-link-context";
+import { setContext } from "apollo-link-context";
 // import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 // import { WebSocketLink } from "apollo-link-ws";
@@ -12,12 +12,6 @@ import { HttpLink } from "apollo-link-http";
 // import fetch from "isomorphic-fetch";
 
 const httpLink = new HttpLink({
-    headers: {
-        authorization: {
-            username: "SCollinA",
-            // password:
-        },
-    },
     uri: "https://api.github.com/graphql",
 });
 
@@ -47,26 +41,27 @@ export const gitHubClient = new ApolloClient({
     // fetch,
     cache: new InMemoryCache(),
     link: ApolloLink.from([
-        httpLink,
         // onError(({ graphQLErrors, networkError }) => {
-        //     if (graphQLErrors) {
-        //         graphQLErrors.map(({ message, locations, path }) =>
-        //             console.log(
-        //                 `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-        //             ),
-        //         );
-        //     }
-        //     if (networkError) { console.log(`[Network error]: ${networkError}`) }
-        // }),
-        // setContext((_, { headers }) => {
-        //     const token = localStorage.getItem("auth-token");
-        //     return {
-        //         headers: {
-        //             ...headers,
-        //             authorization: token ? `Bearer ${token}` : "",
-        //         },
-        //     };
-        // }),
+            //     if (graphQLErrors) {
+                //         graphQLErrors.map(({ message, locations, path }) =>
+                //             console.log(
+                    //                 `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+                    //             ),
+                    //         );
+                    //     }
+                    //     if (networkError) { console.log(`[Network error]: ${networkError}`) }
+                    // }),
+        setContext((_, { headers }) => {
+            const token = process.env.REACT_APP_GITHUB_TOKEN;
+            // localStorage.getItem("auth-token");
+            return {
+                headers: {
+                    ...headers,
+                    authorization: token ? `Bearer ${token}` : "",
+                },
+            };
+        }),
         // link,
-    ]),
-});
+        httpLink,
+        ]),
+    });

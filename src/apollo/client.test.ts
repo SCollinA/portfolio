@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { gitHubClient } from "./client";
 
 describe("GitHub GraphQL client", () => {
-    it("should hit to GraphQL API", (done) => {
+    it("should hit GraphQL API", (done) => {
         gitHubClient.query({
             query: gql`
                 query {
@@ -14,12 +14,17 @@ describe("GitHub GraphQL client", () => {
         })
         .then((result) => {
             expect(result).toEqual({
-                data: {
-                    user: {
+                data:  {
+                    user:  {
+                        __typename: "User",
                         name: "Collin Argo",
                     },
                 },
+                loading: false,
+                networkStatus: 7,
+                stale: false,
             });
+            done();
         });
-    });
+    }, 10000);
 });
