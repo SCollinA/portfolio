@@ -62,6 +62,7 @@
         "no-null-keyword": true,
         "prefer-const": true,
         "jsdoc-format": true,
-        "no-implicit-dependencies": [true, "dev"]
+        "no-implicit-dependencies": [true, "dev"],
+        "no-unused-variable": true
     }
 }
