@@ -1,4 +1,10 @@
 {
+    "extends": ["tslint:latest", "tslint-react"],
+    "linterOptions": {
+        "exclude": [
+            "src/serviceWorker.ts"
+        ]
+    },
     "rules": {
         "class-name": true,
         "comment-format": [
@@ -55,6 +61,7 @@
         "no-trailing-whitespace": true,
         "no-null-keyword": true,
         "prefer-const": true,
-        "jsdoc-format": true
+        "jsdoc-format": true,
+        "no-implicit-dependencies": [true, "dev"]
     }
 }
