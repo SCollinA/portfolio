@@ -15,7 +15,7 @@ describe("Portfolio component", () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it("has a router as a child", () => {
+  it("has a router as a parent", () => {
     const portfolio = enzyme.shallow(<Portfolio/>);
     expect(portfolio.find(Router).exists()).toBe(true);
   });
@@ -38,8 +38,9 @@ describe("Portfolio component", () => {
     expect(router.containsMatchingElement(<Route path="/contact" component={Contact}/>)).toBe(true);
   });
 
-  it("renders NavBar component", () => {
+  it("renders NavBar component on all paths", () => {
     const portfolio = enzyme.shallow(<Portfolio/>);
-    expect(portfolio.find(NavBar).exists()).toBe(true);
+    const router = portfolio.find(Router);
+    expect(router.containsMatchingElement(<Route path="/" component={NavBar}/>)).toBe(true);
   });
 });

@@ -9,8 +9,8 @@ import "./Portfolio.css";
 const Portfolio: React.FC = () => {
   return (
     <div className="Portfolio">
-      <NavBar/>
       <Router>
+        <Route path="/" component={NavBar}/>
         <Route exact={true} path="/" component={Home}/>
         <Route exact={true} path="/github" component={GitHub}/>
         <Route exact={true} path="/contact" component={Contact}/>
