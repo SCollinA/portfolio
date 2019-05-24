@@ -1,6 +1,7 @@
 import gql from "graphql-tag";
 import React from "react";
 import { Query } from "react-apollo";
+import "./GitHub.css";
 
 export default () => {
     return (

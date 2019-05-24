@@ -1,0 +1,11 @@
+.repoDiv {
+    margin: 5% 10%;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 2% 5%;    
+}
+
+.repoLangsDiv > * {
+    display: inline;
+    margin-right: 5%;
+}
