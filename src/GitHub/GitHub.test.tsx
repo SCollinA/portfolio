@@ -16,6 +16,15 @@ const mocks: MockedResponse[] = [
                     repositories: {
                         nodes: [
                             {
+                                createdAt: "3-4-19",
+                                description: "a mock repo",
+                                languages: {
+                                    nodes: [
+                                        {
+                                            name: "TypeScript",
+                                        },
+                                    ],
+                                },
                                 name: "Repo1",
                             },
                         ],
@@ -51,6 +60,20 @@ describe("GitHub component", () => {
         ));
         await new Promise((resolve) => setTimeout(resolve));
         github.update();
-        expect(github.find("h1").hasClass("repoName")).toBe(true);
+        expect(github.find("h1.repoName").exists()).toBe(true);
+    });
+
+    it("displays createdAts, descriptions, languages as h4s", async () => {
+        const github = enzyme.mount((
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <GitHub/>
+            </MockedProvider>
+        ));
+        await new Promise((resolve) => setTimeout(resolve));
+        github.update();
+        expect(github.find("h4.repoCreatedAt").exists()).toBe(true);
+        expect(github.find("h4.repoDesc").exists()).toBe(true);
+        expect(github.find("div.repoLangsDiv").exists()).toBe(true);
+        expect(github.find("h4.repoLang").exists()).toBe(true);
     });
 });
