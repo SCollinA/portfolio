@@ -1,7 +1,9 @@
 import * as enzyme from "enzyme";
 import React from "react";
+import { ApolloProvider } from "react-apollo";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { gitHubClient } from "./apollo/client";
 import Contact from "./Contact/Contact";
 import GitHub from "./GitHub/GitHub";
 import Home from "./Home/Home";
@@ -15,7 +17,7 @@ describe("Portfolio component", () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-  it("has a router as a parent", () => {
+  it("has a router as a child", () => {
     const portfolio = enzyme.shallow(<Portfolio/>);
     expect(portfolio.find(Router).exists()).toBe(true);
   });
@@ -42,5 +44,11 @@ describe("Portfolio component", () => {
     const portfolio = enzyme.shallow(<Portfolio/>);
     const router = portfolio.find(Router);
     expect(router.containsMatchingElement(<Route path="/" component={NavBar}/>)).toBe(true);
+  });
+
+  it("has an Apollo Provider with a gitHubClient as a child", () => {
+    const portfolio = enzyme.shallow(<Portfolio/>);
+    expect(portfolio.find(ApolloProvider).exists()).toBe(true);
+    expect(portfolio.find(ApolloProvider).prop("client")).toBe(gitHubClient);
   });
 });
