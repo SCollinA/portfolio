@@ -5,7 +5,7 @@ import { Query } from "react-apollo";
 export default () => {
     return (
         <div className="GitHub">
-            <Query query={REPO_NAMES}>
+            <Query query={REPO_INFO}>
                 {gitHubRepos}
             </Query>
         </div>
@@ -19,15 +19,23 @@ export const gitHubRepos = (response: IQueryResponse) => {
     }
     return (
         <div className="repositories">
-            {nodes && nodes.map((node, index) => <h1 key={index}>{node.name}</h1>)}
+            {nodes && nodes.map((node, index) => repoName(node.name, index))}
         </div>
     );
 };
 
-export const REPO_NAMES = gql`
+const repoName = (name: string, key: number) => (
+    <h1
+        key={key}
+        className="repoName"
+    >
+        {name}
+    </h1>
+);
+
+export const REPO_INFO = gql`
     query {
         user(login: "SCollinA") {
-            name
             repositories(first: 50) {
                 nodes {
                     name
@@ -47,7 +55,7 @@ export interface IRepoData {
 }
 
 export interface IUser {
-    name: string;
+    // name: string;
     repositories: IRepo;
 }
 
