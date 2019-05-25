@@ -4,7 +4,7 @@ import {
     ApolloLink,
     // split
 } from "apollo-link";
-import { setContext } from "apollo-link-context";
+// import { setContext } from "apollo-link-context";
 // import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 // import { WebSocketLink } from "apollo-link-ws";
@@ -12,7 +12,7 @@ import { HttpLink } from "apollo-link-http";
 // import fetch from "isomorphic-fetch";
 
 const httpLink = new HttpLink({
-    uri: "https://api.github.com/graphql",
+    uri: "http://localhost:4020/graphql",
 });
 
   // Create a WebSocket link:
@@ -37,7 +37,7 @@ const httpLink = new HttpLink({
 //     httpLink,
 //   ) : httpLink;
 
-export const gitHubClient = new ApolloClient({
+export const client = new ApolloClient({
     // fetch,
     cache: new InMemoryCache(),
     link: ApolloLink.from([
@@ -51,16 +51,16 @@ export const gitHubClient = new ApolloClient({
                     //     }
                     //     if (networkError) { console.log(`[Network error]: ${networkError}`) }
                     // }),
-        setContext((_, { headers }) => {
-            const token = process.env.REACT_APP_GITHUB_TOKEN;
-            // localStorage.getItem("auth-token");
-            return {
-                headers: {
-                    ...headers,
-                    authorization: token ? `Bearer ${token}` : "",
-                },
-            };
-        }),
+        // setContext((_, { headers }) => {
+        //     const token = process.env.REACT_APP_GITHUB_TOKEN;
+        //     // localStorage.getItem("auth-token");
+        //     return {
+        //         headers: {
+        //             ...headers,
+        //             authorization: token ? `Bearer ${token}` : "",
+        //         },
+        //     };
+        // }),
         // link,
         httpLink,
         ]),

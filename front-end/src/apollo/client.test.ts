@@ -1,9 +1,9 @@
 import gql from "graphql-tag";
-import { gitHubClient } from "./client";
+import { client } from "./client";
 
-describe("GitHub GraphQL client", () => {
-    it("should hit GraphQL API", (done) => {
-        gitHubClient.query({
+describe("Portfolio GraphQL client", () => {
+    it("should my Portfolio API", (done) => {
+        client.query({
             query: gql`
                 query {
                     user(login: "SCollinA") {
