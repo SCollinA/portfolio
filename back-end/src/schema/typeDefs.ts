@@ -1,7 +1,8 @@
 import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
-    type Query {
-        getRepos: String
-    }
 `;
+
+// type Query {
+//     getRepos: String
+// }

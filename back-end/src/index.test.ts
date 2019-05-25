@@ -1,11 +1,16 @@
 // import { request } from "http";
-// import { server } from "./index";
+// import {
+//     startServer,
+//     stopServer,
+// } from "./index";
 
-// describe("Portfolio server", () => {
-//     afterAll(() => server.close());
-//     it("is listening on port 4020", () => {
-//         request("http://localhost:4020/graphql", (response) => {
-//             expect(response.statusCode).toBe(200);
-//         });
-//     });
-// });
+describe("Portfolio server", () => {
+    // beforeAll(async () => Promise.resolve(startServer()));
+    // afterAll(async () => Promise.resolve(stopServer()));
+    // it("is listening on port 4020", async (done) => {
+    //     await request("http://localhost:4020/graphql", (response) => {
+    //         expect(response.statusCode).toBe(200);
+    //     });
+    //     done();
+    // });
+});

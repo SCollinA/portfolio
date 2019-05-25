@@ -24,9 +24,18 @@ export const server = http.createServer(app);
 export const config = {
     port: 4020,
 };
-server.listen(config.port, () =>
-    console.log( // tslint:disable-line
-        `🚀 Server ready at`,
-        `http://localhost:${config.port}${apollo.graphqlPath}`,
-    ),
-);
+
+export const startServer = async () => {
+    await server.listen(config.port, () =>
+        console.log( // tslint:disable-line
+            `🚀 Server ready at`,
+           `http://localhost:${config.port}${apollo.graphqlPath}`,
+        ),
+    );
+};
+
+export const stopServer = async () => {
+    await server.close();
+};
+
+stopServer();
