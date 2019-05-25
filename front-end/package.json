@@ -1,5 +1,5 @@
 {
-  "name": "portfolio",
+  "name": "front-end1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -42,7 +42,7 @@
     ]
   },
   "devDependencies": {
-    "@types/enzyme": "^3.9.2",
+    "@types/enzyme": "^3.9.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/isomorphic-fetch": "0.0.35",
     "@types/jest": "^24.0.13",
