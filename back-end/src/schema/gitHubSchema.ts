@@ -14,7 +14,7 @@ const http = new HttpLink({
 
 const link = setContext((_, __) => ({
     headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      authorization: `Bearer ${GITHUB_TOKEN}`,
     },
   })).concat(http);
 
