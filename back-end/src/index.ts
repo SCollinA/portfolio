@@ -11,7 +11,7 @@ export const apollo = new ApolloServer({
     typeDefs,
 });
 
-const app = express();
+export const app = express();
 app.use(helmet());
 app.disable("x-powered-by");
 app.use(bodyParser.urlencoded({ extended: false }));
