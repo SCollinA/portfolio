@@ -18,21 +18,26 @@ const contactForm = (submitContactForm: MutationFn) => {
             className="contactForm"
             onSubmit={(event) => contactFormSubmit(event, submitContactForm)} //tslint:disable-line
         >
+            <label htmlFor="name">name</label>
             <input
                 className="contactName"
                 type="text"
                 name="name"
+                id="name"
             />
+            <label htmlFor="email">email</label>
             <input
                 className="contactEmail"
                 type="email"
                 name="email"
             />
+            <label htmlFor="message">message</label>
             <input
                 className="contactMessage"
                 type="text"
                 name="message"
             />
+            <label htmlFor="submit">submit</label>
             <input
                 className="contactSubmit"
                 type="submit"

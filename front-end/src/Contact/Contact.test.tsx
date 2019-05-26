@@ -39,7 +39,7 @@ describe("Contact component", () => {
                 <Contact/>
             </MockedProvider>
         )).find("form");
-        expect(contactForm.children().length).toBe(4);
+        expect(contactForm.find("input").length).toBe(4);
     });
 
     it("first input is text, has class contactName, and has name name", () => {
@@ -48,10 +48,11 @@ describe("Contact component", () => {
                 <Contact/>
             </MockedProvider>
         )).find("form");
-        const contactNameInput = contactForm.childAt(0);
+        const contactNameInput = contactForm.find("input").at(0);
         expect(contactNameInput.prop("type")).toBe("text");
         expect(contactNameInput.hasClass("contactName")).toBe(true);
         expect(contactNameInput.prop("name")).toBe("name");
+        expect(contactNameInput.prop("id")).toBe("name");
     });
 
     it("second input is email, has class contactEmail, and has name email", () => {
@@ -60,7 +61,7 @@ describe("Contact component", () => {
                 <Contact/>
             </MockedProvider>
         )).find("form");
-        const contactEmailInput = contactForm.childAt(1);
+        const contactEmailInput = contactForm.find("input").at(1);
         expect(contactEmailInput.prop("type")).toBe("email");
         expect(contactEmailInput.hasClass("contactEmail")).toBe(true);
         expect(contactEmailInput.prop("name")).toBe("email");
@@ -72,7 +73,7 @@ describe("Contact component", () => {
                 <Contact/>
             </MockedProvider>
         )).find("form");
-        const contactMessageInput = contactForm.childAt(2);
+        const contactMessageInput = contactForm.find("input").at(2);
         expect(contactMessageInput.prop("type")).toBe("text");
         expect(contactMessageInput.hasClass("contactMessage")).toBe(true);
         expect(contactMessageInput.prop("name")).toBe("message");
@@ -84,7 +85,7 @@ describe("Contact component", () => {
                 <Contact/>
             </MockedProvider>
         )).find("form");
-        const contactMessageInput = contactForm.childAt(3);
+        const contactMessageInput = contactForm.find("input").at(3);
         expect(contactMessageInput.prop("type")).toBe("submit");
         expect(contactMessageInput.hasClass("contactSubmit")).toBe(true);
         expect(contactMessageInput.prop("value")).toBe("contact collin");
@@ -116,5 +117,22 @@ describe("Contact component", () => {
                 },
             },
         })).toBeDefined();
+    });
+
+    it("form has 4 labels for name, email, message, and submit inputs", () => {
+        const contactForm = enzyme.mount((
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <Contact/>
+            </MockedProvider>
+        )).find("form");
+        expect(contactForm.find("label").length).toBe(4);
+        expect(contactForm.find("label").at(0).prop("htmlFor")).toBe("name");
+        expect(contactForm.find("label").at(0).text()).toBe("name");
+        expect(contactForm.find("label").at(1).prop("htmlFor")).toBe("email");
+        expect(contactForm.find("label").at(1).text()).toBe("email");
+        expect(contactForm.find("label").at(2).prop("htmlFor")).toBe("message");
+        expect(contactForm.find("label").at(2).text()).toBe("message");
+        expect(contactForm.find("label").at(3).prop("htmlFor")).toBe("submit");
+        expect(contactForm.find("label").at(3).text()).toBe("submit");
     });
 });
