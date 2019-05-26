@@ -1,12 +1,12 @@
 import gql from "graphql-tag";
-import React from "react";
+import React, { FormEvent } from "react";
 import { Mutation, MutationFn, MutationResult } from "react-apollo";
 
 export default () => {
     return (
         <div className="Contact">
             <Mutation mutation={SUBMIT_CONTACT}>
-                {(submitContactForm: MutationFn, { data, loading }: MutationResult) => contactForm(submitContactForm)}
+                {(submitContactForm: MutationFn) => contactForm(submitContactForm)}
             </Mutation>
         </div>
     );
@@ -14,7 +14,10 @@ export default () => {
 
 const contactForm = (submitContactForm: MutationFn) => {
     return (
-        <form className="contactForm">
+        <form
+            className="contactForm"
+            onSubmit={(event) => contactFormSubmit(event, submitContactForm)} //tslint:disable-line
+        >
             <input
                 className="contactName"
                 type="text"
@@ -32,6 +35,26 @@ const contactForm = (submitContactForm: MutationFn) => {
             />
         </form>
     );
+};
+
+interface IContactFormEvent extends FormEvent {
+    target: IContactFormTarget;
+}
+
+interface IContactFormTarget extends EventTarget {
+    name?: any;
+    email?: any;
+    message?: any;
+}
+
+export const contactFormSubmit = (event: IContactFormEvent, submitContactForm: MutationFn) => {
+    event.preventDefault();
+    const { name, email, message } = event.target;
+    submitContactForm({ variables: {
+        email: email.value,
+        message: message.value,
+        name: name.value,
+    }});
 };
 
 export const SUBMIT_CONTACT = gql`

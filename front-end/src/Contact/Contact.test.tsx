@@ -1,8 +1,8 @@
 import * as enzyme from "enzyme";
-import React from "react";
+import React, { FormEvent } from "react";
 import { Mutation } from "react-apollo";
 import { MockedProvider, MockedResponse } from "react-apollo/test-utils";
-import Contact, { SUBMIT_CONTACT } from "./Contact";
+import Contact, { contactFormSubmit, SUBMIT_CONTACT } from "./Contact";
 
 const mocks: MockedResponse[] = [
     {
@@ -10,10 +10,11 @@ const mocks: MockedResponse[] = [
             query: SUBMIT_CONTACT,
             variables: {
                 email: "collin.argo@gmail.com",
-                message: "Hello world!",
+                message: "Hello World!",
                 name: "Collin",
             },
         },
+        result: {},
     },
 ];
 
@@ -81,5 +82,27 @@ describe("Contact component", () => {
         const contact = enzyme.shallow(<Contact/>);
         expect(contact.children().length).toBe(1);
         expect(contact.childAt(0).is(Mutation)).toBe(true);
+    });
+
+    it("contains a form with onSubmit", () => {
+        const contact = enzyme.mount((
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <Contact/>
+            </MockedProvider>
+        ));
+        const contactForm = contact.find("form");
+        expect(contactForm.simulate("submit", {
+            target: {
+                email: {
+                    value: "collin.argo@gmail.com",
+                },
+                message: {
+                    value: "Hello World!",
+                },
+                name: {
+                    value: "Collin",
+                },
+            },
+        })).toBeDefined();
     });
 });
