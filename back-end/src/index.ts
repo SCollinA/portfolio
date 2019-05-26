@@ -4,6 +4,7 @@ import express from "express";
 import { makeExecutableSchema, mergeSchemas } from "graphql-tools";
 import helmet from "helmet";
 import http from "http";
+import path from "path";
 import getGitHubSchema from "./schema/gitHubSchema";
 import { resolvers } from "./schema/resolvers";
 import { typeDefs } from "./schema/typeDefs";
@@ -13,7 +14,7 @@ app.use(helmet());
 app.disable("x-powered-by");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: "5mb" }));
-app.use(express.static("build"));
+app.use(express.static(path.join(__dirname, "../../front-end/build")));
 
 const server = http.createServer(app);
 const config = {
