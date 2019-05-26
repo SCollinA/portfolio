@@ -2,7 +2,7 @@ import * as enzyme from "enzyme";
 import React from "react";
 import { Query } from "react-apollo";
 import { MockedProvider, MockedResponse } from "react-apollo/test-utils";
-import GitHub, { gitHubRepos, INode, REPO_INFO } from "./GitHub";
+import GitHub, { gitHubRepos, REPO_INFO } from "./GitHub";
 
 const mocks: MockedResponse[] = [
     {
