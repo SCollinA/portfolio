@@ -59,6 +59,11 @@
         "jsdoc-format": true,
         "no-implicit-dependencies": [true, "dev"],
         "no-unused-variable": true,
-        "no-submodule-imports": true
+        "no-submodule-imports": true,
+        "variable-name": [
+            true, 
+            "allow-leading-underscore", 
+            "ban-keywords"
+        ]
     }
 }

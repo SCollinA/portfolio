@@ -1,11 +1,13 @@
+import dotenv from "dotenv";
 import { Credentials } from "google-auth-library";
 import { google } from "googleapis";
 import nodemailer from "nodemailer";
 import serviceKey from "../service_key.json";
+dotenv.config();
 
 export const resolvers = {
     Mutation: {
-        contact: (args: any) => {
+        contact: (_obj: any, args: any, _context: any, _info: any) => {
             const { name, email, message } = args;
             const myEmail = "hi@collinargo.com";
             const jwtClient = new google.auth.JWT(
@@ -35,7 +37,7 @@ export const resolvers = {
                     secure: true,
                 });
                 transporter.sendMail({
-                    from: "An Example <" + email + ">", // this is being overwritten by gmail
+                    from: "portfolio contact <" + email + ">", // this is being overwritten by gmail
                     replyTo: email,
                     subject: "portfolio contact",
                     text: `
@@ -44,7 +46,7 @@ export const resolvers = {
 
                         - reply directly to this e-mail to respond -
                     `,
-                    to: myEmail,
+                    to: process.env.PORTFOLIO_EMAIL,
                 }, (mailError: Error | null, mailInfo: any) => {
                     if (mailError) {
                         console.log("contact e-mail not sent!", mailError, mailInfo); //tslint:disable-line
