@@ -1,7 +1,7 @@
 import { Credentials } from "google-auth-library";
 import { google } from "googleapis";
 import nodemailer from "nodemailer";
-import serviceKey from "../../service_key.json";
+import serviceKey from "../service_key.json";
 
 export const resolvers = {
     Mutation: {
@@ -22,29 +22,29 @@ export const resolvers = {
                     return false;
                 }
                 const transporter = nodemailer.createTransport({
-                    // auth: {
-                    //     accessToken: tokens.access_token,
-                    //     expires: tokens.expiry_date,
-                    //     privateKey: serviceKey.private_key,
-                    //     serviceClient: serviceKey.client_id,
-                    //     type: "OAuth2",
-                    //     user: myEmail,
-                    // },
-                    // host: "smtp.gmail.com",
-                    // port: 465,
-                    // secure: true,
+                    auth: {
+                        accessToken: (tokens && tokens.access_token) || undefined,
+                        expires: (tokens && tokens.expiry_date) || undefined,
+                        privateKey: serviceKey.private_key,
+                        serviceClient: serviceKey.client_id,
+                        type: "OAuth2",
+                        user: myEmail,
+                    },
+                    host: "smtp.gmail.com",
+                    port: 465,
+                    secure: true,
                 });
                 transporter.sendMail({
                     from: "An Example <" + email + ">", // this is being overwritten by gmail
                     replyTo: email,
-                    subject: "art gallery contact",
+                    subject: "portfolio contact",
                     text: `
                         ${name}
                         ${message}
 
                         - reply directly to this e-mail to respond -
                     `,
-                    to: process.env.CLIENT_EMAIL,
+                    to: myEmail,
                 }, (mailError: Error | null, mailInfo: any) => {
                     if (mailError) {
                         console.log("contact e-mail not sent!", mailError, mailInfo); //tslint:disable-line
