@@ -33,13 +33,13 @@ describe("Contact component", () => {
         expect(contact.find("form").hasClass("contactForm")).toBe(true);
     });
 
-    it("form has 3 inputs for name, email, and message", () => {
+    it("form has 4 inputs for name, email, message, and submit", () => {
         const contactForm = enzyme.mount((
             <MockedProvider mocks={mocks} addTypename={false}>
                 <Contact/>
             </MockedProvider>
         )).find("form");
-        expect(contactForm.children().length).toBe(3);
+        expect(contactForm.children().length).toBe(4);
     });
 
     it("first input is text, has class contactName, and has name name", () => {
@@ -76,6 +76,18 @@ describe("Contact component", () => {
         expect(contactMessageInput.prop("type")).toBe("text");
         expect(contactMessageInput.hasClass("contactMessage")).toBe(true);
         expect(contactMessageInput.prop("name")).toBe("message");
+    });
+
+    it("third input is text, has class contactMessage, and has name message", () => {
+        const contactForm = enzyme.mount((
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <Contact/>
+            </MockedProvider>
+        )).find("form");
+        const contactMessageInput = contactForm.childAt(3);
+        expect(contactMessageInput.prop("type")).toBe("submit");
+        expect(contactMessageInput.hasClass("contactSubmit")).toBe(true);
+        expect(contactMessageInput.prop("value")).toBe("contact collin");
     });
 
     it("has a mutation component as only child", () => {

@@ -33,6 +33,11 @@ const contactForm = (submitContactForm: MutationFn) => {
                 type="text"
                 name="message"
             />
+            <input
+                className="contactSubmit"
+                type="submit"
+                value="contact collin"
+            />
         </form>
     );
 };
