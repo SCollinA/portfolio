@@ -4,8 +4,8 @@ export const typeDefs = gql`
     type Query {
         getName: String
     }
-`;
 
-// type Query {
-//     getRepos: String
-// }
+    type Mutation {
+        contact(name: String, email: String, message: String): String
+    }
+`;

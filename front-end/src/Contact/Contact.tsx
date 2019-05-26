@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 import React, { FormEvent } from "react";
-import { Mutation, MutationFn, MutationResult } from "react-apollo";
+import { Mutation, MutationFn } from "react-apollo";
 
 export default () => {
     return (
@@ -57,7 +57,7 @@ interface IContactFormTarget extends EventTarget {
     message?: any;
 }
 
-export const contactFormSubmit = (event: IContactFormEvent, submitContactForm: MutationFn) => {
+const contactFormSubmit = (event: IContactFormEvent, submitContactForm: MutationFn) => {
     event.preventDefault();
     const { name, email, message } = event.target;
     submitContactForm({ variables: {
@@ -68,7 +68,7 @@ export const contactFormSubmit = (event: IContactFormEvent, submitContactForm: M
 };
 
 export const SUBMIT_CONTACT = gql`
-mutation SubmitContactForm($name: String, $email: String, $message: String) {
-    contact(name: $name, email: $email, message: $message)
-}
+    mutation SubmitContactForm($name: String, $email: String, $message: String) {
+        contact(name: $name, email: $email, message: $message)
+    }
 `;

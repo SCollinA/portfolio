@@ -2,7 +2,7 @@ import * as enzyme from "enzyme";
 import React, { FormEvent } from "react";
 import { Mutation } from "react-apollo";
 import { MockedProvider, MockedResponse } from "react-apollo/test-utils";
-import Contact, { contactFormSubmit, SUBMIT_CONTACT } from "./Contact";
+import Contact, { SUBMIT_CONTACT } from "./Contact";
 
 const mocks: MockedResponse[] = [
     {
