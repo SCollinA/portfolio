@@ -33,13 +33,14 @@ describe("Contact component", () => {
         expect(contact.find("form").hasClass("contactForm")).toBe(true);
     });
 
-    it("form has 4 inputs for name, email, message, and submit", () => {
+    it("form has 3 inputs for name, email, and submit and 1 textarea for message", () => {
         const contactForm = enzyme.mount((
             <MockedProvider mocks={mocks} addTypename={false}>
                 <Contact/>
             </MockedProvider>
         )).find("form");
-        expect(contactForm.find("input").length).toBe(4);
+        expect(contactForm.find("input").length).toBe(3);
+        expect(contactForm.find("textarea").length).toBe(1);
     });
 
     it("first input is text, has class contactName, and has name name", () => {
@@ -67,28 +68,27 @@ describe("Contact component", () => {
         expect(contactEmailInput.prop("name")).toBe("email");
     });
 
-    it("third input is text, has class contactMessage, and has name message", () => {
+    it("third child is textarea, has class contactMessage, and has name message", () => {
         const contactForm = enzyme.mount((
             <MockedProvider mocks={mocks} addTypename={false}>
                 <Contact/>
             </MockedProvider>
         )).find("form");
-        const contactMessageInput = contactForm.find("input").at(2);
-        expect(contactMessageInput.prop("type")).toBe("text");
+        const contactMessageInput = contactForm.find("textarea");
         expect(contactMessageInput.hasClass("contactMessage")).toBe(true);
         expect(contactMessageInput.prop("name")).toBe("message");
     });
 
-    it("third input is text, has class contactMessage, and has name message", () => {
+    it("third input is submit, has class contactSubmit, and has value 'submit'", () => {
         const contactForm = enzyme.mount((
             <MockedProvider mocks={mocks} addTypename={false}>
                 <Contact/>
             </MockedProvider>
         )).find("form");
-        const contactMessageInput = contactForm.find("input").at(3);
-        expect(contactMessageInput.prop("type")).toBe("submit");
-        expect(contactMessageInput.hasClass("contactSubmit")).toBe(true);
-        expect(contactMessageInput.prop("value")).toBe("contact collin");
+        const contactSubmitInput = contactForm.find("input").at(2);
+        expect(contactSubmitInput.prop("type")).toBe("submit");
+        expect(contactSubmitInput.hasClass("contactSubmit")).toBe(true);
+        expect(contactSubmitInput.prop("value")).toBe("contact collin");
     });
 
     it("has a mutation component as only child", () => {
@@ -134,5 +134,15 @@ describe("Contact component", () => {
         expect(contactForm.find("label").at(2).text()).toBe("message");
         expect(contactForm.find("label").at(3).prop("htmlFor")).toBe("submit");
         expect(contactForm.find("label").at(3).text()).toBe("submit");
+    });
+
+    it("message textarea has max length of 500 chars", () => {
+        const contactForm = enzyme.mount((
+            <MockedProvider mocks={mocks} addTypename={false}>
+                <Contact/>
+            </MockedProvider>
+        )).find("form");
+        const contactMessageInput = contactForm.find("textarea");
+        expect(contactMessageInput.prop("maxLength")).toBe(500);
     });
 });

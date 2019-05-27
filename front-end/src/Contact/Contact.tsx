@@ -1,6 +1,7 @@
 import gql from "graphql-tag";
 import React, { FormEvent } from "react";
 import { Mutation, MutationFn } from "react-apollo";
+import "./Contact.css";
 
 export default () => {
     return (
@@ -32,10 +33,10 @@ const contactForm = (submitContactForm: MutationFn) => {
                 name="email"
             />
             <label htmlFor="message">message</label>
-            <input
+            <textarea
                 className="contactMessage"
-                type="text"
                 name="message"
+                maxLength={500}
             />
             <label htmlFor="submit">submit</label>
             <input

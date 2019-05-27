@@ -1,0 +1,7 @@
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: auto;
+    height: 500px;
+}
