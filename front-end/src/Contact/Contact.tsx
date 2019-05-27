@@ -1,6 +1,7 @@
 import gql from "graphql-tag";
 import React, { FormEvent } from "react";
 import { Mutation, MutationFn } from "react-apollo";
+import "./Contact.css";
 
 export default () => {
     return (
@@ -18,31 +19,35 @@ const contactForm = (submitContactForm: MutationFn) => {
             className="contactForm"
             onSubmit={(event) => contactFormSubmit(event, submitContactForm)} //tslint:disable-line
         >
-            <label htmlFor="name">name</label>
-            <input
-                className="contactName"
-                type="text"
-                name="name"
-                id="name"
-            />
-            <label htmlFor="email">email</label>
-            <input
-                className="contactEmail"
-                type="email"
-                name="email"
-            />
-            <label htmlFor="message">message</label>
-            <input
-                className="contactMessage"
-                type="text"
-                name="message"
-            />
-            <label htmlFor="submit">submit</label>
-            <input
-                className="contactSubmit"
-                type="submit"
-                value="contact collin"
-            />
+            <label htmlFor="name">name
+                <input
+                    className="contactName"
+                    type="text"
+                    name="name"
+                    id="name"
+                />
+            </label>
+            <label htmlFor="email">email
+                <input
+                    className="contactEmail"
+                    type="email"
+                    name="email"
+                />
+            </label>
+            <label htmlFor="message">message
+                <textarea
+                    className="contactMessage"
+                    name="message"
+                    maxLength={500}
+                />
+            </label>
+            <label htmlFor="submit">submit
+                <input
+                    className="contactSubmit"
+                    type="submit"
+                    value="contact collin"
+                />
+            </label>
         </form>
     );
 };

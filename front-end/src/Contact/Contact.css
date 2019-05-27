@@ -1,0 +1,22 @@
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 500px;
+    margin: auto;
+    height: 500px;
+}
+
+.contactForm > label {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactForm > label:last-child {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contactSubmit {
+    margin: 0 auto;
+}
