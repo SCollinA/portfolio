@@ -12,7 +12,7 @@ const http = new HttpLink({
     uri: "https://api.github.com/graphql",
 });
 
-const link = setContext((_, __) => ({
+const link = setContext((_request, _prevContext) => ({
     headers: {
       authorization: `Bearer ${GITHUB_TOKEN}`,
     },

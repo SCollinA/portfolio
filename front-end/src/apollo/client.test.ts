@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { client } from "./client";
 
 describe("Portfolio GraphQL client", () => {
-    it("should my Portfolio API", (done) => {
+    it("should hit my Portfolio API", (done) => {
         client.query({
             query: gql`
                 query {

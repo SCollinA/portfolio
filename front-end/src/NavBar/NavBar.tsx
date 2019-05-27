@@ -5,9 +5,10 @@ import "./NavBar.css";
 export default () => {
     return (
         <header className="NavBar">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/github">GitHub</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
+            <NavLink to="/">home</NavLink>
+            <NavLink to="/github">github</NavLink>
+            <NavLink to="/resume">resume</NavLink>
+            <NavLink to="/contact">contact</NavLink>
         </header>
     );
 };

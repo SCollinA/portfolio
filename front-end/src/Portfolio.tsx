@@ -7,6 +7,7 @@ import GitHub from "./GitHub/GitHub";
 import Home from "./Home/Home";
 import NavBar from "./NavBar/NavBar";
 import "./Portfolio.css";
+import Resume from "./Resume/Resume";
 
 const Portfolio: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Portfolio: React.FC = () => {
           <Route path="/" component={NavBar}/>
           <Route exact={true} path="/" component={Home}/>
           <Route exact={true} path="/github" component={GitHub}/>
+          <Route exact={true} path="/resume" component={Resume}/>
           <Route exact={true} path="/contact" component={Contact}/>
         </Router>
       </ApolloProvider>
