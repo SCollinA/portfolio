@@ -9,6 +9,7 @@ import GitHub from "./GitHub/GitHub";
 import Home from "./Home/Home";
 import NavBar from "./NavBar/NavBar";
 import Portfolio from "./Portfolio";
+import Resume from "./Resume/Resume";
 
 describe("Portfolio component", () => {
   it("renders without crashing", () => {
@@ -50,5 +51,11 @@ describe("Portfolio component", () => {
     const portfolio = enzyme.shallow(<Portfolio/>);
     expect(portfolio.find(ApolloProvider).exists()).toBe(true);
     expect(portfolio.find(ApolloProvider).prop("client")).toBe(client);
+  });
+
+  it("renders Resume component at '/resume' path", () => {
+    const portfolio = enzyme.shallow(<Portfolio/>);
+    const router = portfolio.find(Router);
+    expect(router.containsMatchingElement(<Route path="/resume" component={Resume}/>)).toBe(true);
   });
 });
