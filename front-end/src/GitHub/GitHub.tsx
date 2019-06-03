@@ -64,12 +64,12 @@ const repoLangs = (languages: ILang) => (
 export const REPO_INFO = gql`
     query {
         user(login: "SCollinA") {
-            repositories(first: 100, orderBy: {field:UPDATED_AT, direction:DESC}) {
+            repositories(first: 20, orderBy: {field:UPDATED_AT, direction:DESC}) {
                 nodes {
                     name
                     createdAt
                     description
-                    languages(first: 10) {
+                    languages(first: 4) {
                         nodes {
                             name
                         }

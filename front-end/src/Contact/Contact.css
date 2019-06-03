@@ -12,6 +12,8 @@
     width: 300px;
     height: 500px;
     /* need to adjust width and height for mobile */
+    padding: 10%;
+    background-color: lightgrey;
 }
 
 .contactForm > label {
