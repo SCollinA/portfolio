@@ -5,7 +5,11 @@
     padding: 2% 5%;    
 }
 
+.repoLangsDiv {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .repoLangsDiv > * {
-    display: inline;
-    margin-right: 5%;
+    margin: 0 5%;
 }

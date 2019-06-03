@@ -18,8 +18,10 @@ export function rateLimiter(req: any, res: any, next: any): void {
         // for each request, set leak timeout for bucket
         // const leak =
         setTimeout(() => {
-            console.log("DECR bucket -> " + bucket, "ip", req.ip); // tslint:disable-line
-            redisClient.decr(req.ip);
+            redisClient.decr(req.ip)
+            .then((decrBucket) => {
+                console.log("DECR bucket -> " + decrBucket, "ip", req.ip); // tslint:disable-line
+            });
         }, 60 * 1000);
         // check bucket
         // if not full

@@ -1,0 +1,15 @@
+.Portfolio {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: url("./images/the_universe.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    /* max-width: 800px;
+    margin: auto; */
+}
+
+.Portfolio > *:not(:first-child):not(:last-child) {
+    flex: 1;
+    margin: 0 10%;
+}

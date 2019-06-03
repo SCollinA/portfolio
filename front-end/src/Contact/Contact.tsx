@@ -39,6 +39,7 @@ const contactForm = (submitContactForm: MutationFn) => {
                     className="contactMessage"
                     name="message"
                     maxLength={500}
+                    rows={10}
                 />
             </label>
             <label htmlFor="submit">submit
