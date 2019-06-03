@@ -2,8 +2,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background-image: url("../images/the_universe.jpg");
-    background-size: contain;
 }
 
 .Home > h1 {
