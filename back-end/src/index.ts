@@ -5,11 +5,13 @@ import { makeExecutableSchema, mergeSchemas } from "graphql-tools";
 import helmet from "helmet";
 import http from "http";
 import path from "path";
+import { rateLimiter } from "./redis/rateLimiter";
 import getGitHubSchema from "./schema/gitHubSchema";
 import { resolvers } from "./schema/resolvers";
 import { typeDefs } from "./schema/typeDefs";
 
 const app = express();
+app.use(rateLimiter);
 app.use(helmet());
 app.disable("x-powered-by");
 app.use(bodyParser.urlencoded({ extended: false }));
