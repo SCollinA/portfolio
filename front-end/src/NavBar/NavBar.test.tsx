@@ -37,4 +37,12 @@ describe("NavBar component", () => {
         expect(navbar.childAt(3).is(NavLink)).toBe(true);
         expect(navbar.childAt(3).prop("to")).toBe("/contact");
     });
+
+    it("all NavLinks have active class of activeNavLink", () => {
+        const navbar = enzyme.shallow(<NavBar/>);
+        const navLinks = navbar.find(NavLink);
+        navLinks.forEach((navLink) => {
+            expect(navLink.prop("activeClassName")).toBe("active-nav-link");
+        });
+    });
 });

@@ -5,10 +5,31 @@ import "./NavBar.css";
 export default () => {
     return (
         <header className="NavBar">
-            <NavLink to="/">home</NavLink>
-            <NavLink to="/github">github</NavLink>
-            <NavLink to="/resume">resume</NavLink>
-            <NavLink to="/contact">contact</NavLink>
+            <NavLink
+                activeClassName="active-nav-link"
+                exact={true}
+                to="/"
+            >
+                home
+            </NavLink>
+            <NavLink
+                activeClassName="active-nav-link"
+                to="/github"
+            >
+                github
+            </NavLink>
+            <NavLink
+                activeClassName="active-nav-link"
+                to="/resume"
+            >
+                resume
+            </NavLink>
+            <NavLink
+                activeClassName="active-nav-link"
+                to="/contact"
+            >
+                contact
+            </NavLink>
         </header>
     );
 };
