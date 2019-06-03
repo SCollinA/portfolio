@@ -22,10 +22,12 @@
 }
 
 .contactForm > label:last-child {
-    margin: 0 auto;
+    margin: 0;
     text-align: center;
 }
 
 .contactSubmit {
     margin: 0 auto;
+    background-color: lightskyblue;
+    padding: 5%;
 }
