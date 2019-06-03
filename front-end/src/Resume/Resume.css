@@ -1,5 +1,18 @@
+.Resume {
+    display: flex;
+    flex-direction: column;
+}
+
 .resumeImg {
+    margin: auto;
     width: 80%;
     display: block;
-    margin: auto;
+    border: ridge black 1px;
+    box-shadow: 10px 10px lightslategray;
+}
+
+.resumeImg:hover {
+    width: 82%;
+    box-shadow: 20px 20px lightslategray;
+    transition: all 1s ease-in-out;
 }

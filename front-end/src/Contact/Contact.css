@@ -1,10 +1,17 @@
+.Contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .contactForm {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    max-width: 500px;
-    margin: auto;
+    width: 300px;
     height: 500px;
+    /* need to adjust width and height for mobile */
 }
 
 .contactForm > label {
