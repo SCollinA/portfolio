@@ -7,10 +7,12 @@ dotenv.config();
 
 const { GITHUB_TOKEN } = process.env;
 
-const http = new HttpLink({
+const options: HttpLink.Options = {
     fetch,
     uri: "https://api.github.com/graphql",
-});
+};
+
+const http = new HttpLink(options);
 
 const link = setContext((_request, _prevContext) => ({
     headers: {
