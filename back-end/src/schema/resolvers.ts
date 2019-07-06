@@ -36,6 +36,7 @@ export const resolvers = {
                     port: 465,
                     secure: true,
                 });
+
                 transporter.sendMail({
                     from: "portfolio contact <" + email + ">", // this is being overwritten by gmail
                     replyTo: email,

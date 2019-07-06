@@ -3,11 +3,20 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    /* height: 5%; */
     background-color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.built-with {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.built-with > * {
+    padding: 0 2%;
 }
 
 @media (max-width: 500px) {

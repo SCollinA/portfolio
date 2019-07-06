@@ -10,7 +10,6 @@
     flex-direction: column;
     justify-content: space-evenly;
     width: 300px;
-    height: 500px;
     /* need to adjust width and height for mobile */
     padding: 10%;
     background-color: lightgrey;
@@ -19,6 +18,7 @@
 .contactForm > label {
     display: flex;
     flex-direction: column;
+    padding: 2% 0;
 }
 
 .contactForm > label:last-child {
@@ -30,4 +30,10 @@
     margin: 0 auto;
     background-color: lightskyblue;
     padding: 5%;
+}
+
+@media (max-width: 500px) {
+    .contactForm {
+        width: unset;
+    }
 }

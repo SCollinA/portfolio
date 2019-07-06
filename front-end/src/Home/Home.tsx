@@ -4,11 +4,13 @@ import "./Home.css";
 export default () => {
     return (
         <div className="Home">
-            <h1>Hello World!</h1>
-            <img
-                src="./images/profile.jpg"
-                alt="Collin's profile"
-            />
+            <div className="heroDiv">
+                <h1>Hello World!</h1>
+                <img
+                    src="./images/profile.jpg"
+                    alt="Collin's profile"
+                />
+            </div>
             <p>
                 Welcome to the latest installment of
                 Collin Argo's portfolio! This version

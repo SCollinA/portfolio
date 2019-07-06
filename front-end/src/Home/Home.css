@@ -4,9 +4,14 @@
     justify-content: space-evenly;
 }
 
-.Home > h1 {
-    margin-right: auto;
-    margin-left: 10%;
+.heroDiv {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.heroDiv > h1 {
+    text-align: center;
     color: lightsalmon;
     font-size: 4rem;
     background-color: whitesmoke;
@@ -15,10 +20,8 @@
     padding: 0 2%;
 }
 
-.Home > img {
+.heroDiv > img {
     display: block;
-    margin-left: auto;
-    margin-right: 10%;
     border-radius: 50%;
 }
 
@@ -34,7 +37,7 @@
 }
 
 @media (max-width: 500px) {
-    .Home > h1 {
-        margin-left: auto;
+    .heroDiv {
+        flex-direction: column;
     }
 }

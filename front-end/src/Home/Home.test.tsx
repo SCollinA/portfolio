@@ -10,12 +10,23 @@ describe("Home component", () => {
 
     it("renders three children: h1, img, p", () => {
         const home = enzyme.shallow(<Home/>);
-        expect(home.children().length).toBe(3);
+        // expect(home.children().length).toBe(3);
+        expect(home.find("h1").exists()).toBe(true);
+        expect(home.find("img").exists()).toBe(true);
+        expect(home.find("p").exists()).toBe(true);
     });
 
-    it("renders an h1 with text 'Hello World!' as first child", () => {
+    it("renders an h1 with text 'Hello World!'", () => {
         const home = enzyme.shallow(<Home/>);
-        expect(home.childAt(0).is("h1")).toBe(true);
-        expect(home.childAt(0).text()).toBe("Hello World!");
+        expect(home.find("h1").text()).toBe("Hello World!");
+    });
+
+    it("renders the Hello World and profile picture in a Hero div", () => {
+        const home = enzyme.shallow(<Home/>);
+        const heroDiv = home.find("div.heroDiv");
+        expect(heroDiv.exists()).toBe(true);
+        expect(heroDiv.children().length).toBe(2);
+        expect(heroDiv.childAt(0).is("h1")).toBe(true);
+        expect(heroDiv.childAt(1).is("img")).toBe(true);
     });
 });

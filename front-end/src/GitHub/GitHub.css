@@ -1,12 +1,14 @@
 .repoDiv {
     margin: 5% 10%;
-    background-color: lightgray;
+    background-color: white;
     border-radius: 10px;
     padding: 2% 5%;    
+    text-align: center;
 }
 
 .repoLangsDiv {
     display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
