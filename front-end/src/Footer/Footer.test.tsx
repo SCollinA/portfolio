@@ -30,4 +30,11 @@ describe("Footer component", () => {
         expect(builtLinks.at(1).prop("children")).toBe("React");
         expect(builtLinks.at(1).prop("to")).toBe("https://reactjs.org");
     });
+
+    it("social links has link to GitHub", () => {
+        const footer = enzyme.shallow(<Footer/>);
+        const socialLinks = footer.find("div.social-links");
+        expect(socialLinks.childAt(0).prop("children")).toBe("GitHub");
+        expect(socialLinks.childAt(0).prop("to")).toBe("https://github.com/SCollinA");
+    });
 });

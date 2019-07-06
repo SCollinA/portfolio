@@ -11,12 +11,12 @@
 
 .built-with {
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
+    white-space: nowrap;
 }
 
 .built-with > * {
-    padding: 0 1%;
+    padding: 0 2%;
 }
 
 @media (max-width: 500px) {

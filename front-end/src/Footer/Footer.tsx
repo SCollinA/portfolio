@@ -11,7 +11,9 @@ export default () => {
                 <NavLink to="https://reactjs.org">React</NavLink>
             </div>
             <div className="social-links">
-                GitHub
+                <NavLink to="https://github.com/SCollinA">
+                    GitHub
+                </NavLink>
             </div>
             <div className="copy-date">
                 © 2019
