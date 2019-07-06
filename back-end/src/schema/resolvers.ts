@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import { Credentials } from "google-auth-library";
 import { google } from "googleapis";
 import nodemailer from "nodemailer";
+import { SmtpOptions } from "nodemailer-smtp-transport";
 import serviceKey from "../service_key.json";
 dotenv.config();
 
@@ -35,7 +36,7 @@ export const resolvers = {
                     host: "smtp.gmail.com",
                     port: 465,
                     secure: true,
-                });
+                } as SmtpOptions); //tslint:disable-line
 
                 transporter.sendMail({
                     from: "portfolio contact <" + email + ">", // this is being overwritten by gmail
