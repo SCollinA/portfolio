@@ -26,8 +26,12 @@ describe("Footer component", () => {
         expect(builtLinks.length).toBe(2);
         expect(builtLinks.at(0).prop("children")).toBe("Apollo");
         expect(builtLinks.at(0).prop("href")).toBe("https://www.apollographql.com/");
+        expect(builtLinks.at(0).prop("target")).toBe("_blank");
+        expect(builtLinks.at(0).prop("rel")).toBe("noopener noreferrer");
         expect(builtLinks.at(1).prop("children")).toBe("React");
         expect(builtLinks.at(1).prop("href")).toBe("https://reactjs.org");
+        expect(builtLinks.at(1).prop("target")).toBe("_blank");
+        expect(builtLinks.at(1).prop("rel")).toBe("noopener noreferrer");
     });
 
     it("social links has link to GitHub", () => {
@@ -35,5 +39,7 @@ describe("Footer component", () => {
         const socialLinks = footer.find("div.social-links");
         expect(socialLinks.childAt(0).prop("children")).toBe("GitHub");
         expect(socialLinks.childAt(0).prop("href")).toBe("https://github.com/SCollinA");
+        expect(socialLinks.childAt(0).prop("target")).toBe("_blank");
+        expect(socialLinks.childAt(0).prop("rel")).toBe("noopener noreferrer");
     });
 });
