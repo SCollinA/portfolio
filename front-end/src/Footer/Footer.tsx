@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Footer.css";
 
 export default () => {
@@ -6,7 +7,8 @@ export default () => {
         <div className="Footer">
             <div className="built-with">
                 <h4>Built with:</h4>
-                <h4>Apollo</h4>
+                <NavLink to="https://www.apollographql.com/">Apollo</NavLink>
+                <NavLink to="https://reactjs.org">React</NavLink>
             </div>
             <div className="social-links">
                 GitHub
