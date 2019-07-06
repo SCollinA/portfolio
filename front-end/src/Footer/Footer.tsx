@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "./Footer.css";
 
 export default () => {
@@ -7,13 +6,13 @@ export default () => {
         <div className="Footer">
             <div className="built-with">
                 <h4>Built with:</h4>
-                <NavLink to="https://www.apollographql.com/">Apollo</NavLink>
-                <NavLink to="https://reactjs.org">React</NavLink>
+                <a href="https://www.apollographql.com/">Apollo</a>
+                <a href="https://reactjs.org">React</a>
             </div>
             <div className="social-links">
-                <NavLink to="https://github.com/SCollinA">
+                <a href="https://github.com/SCollinA">
                     GitHub
-                </NavLink>
+                </a>
             </div>
             <div className="copy-date">
                 © 2019
