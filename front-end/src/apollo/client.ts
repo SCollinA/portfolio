@@ -13,7 +13,7 @@ import { HttpLink } from "apollo-link-http";
 
 const httpLink = new HttpLink({
     // uri: "http://localhost:4020/graphql",
-    uri: "http://collinargo.com:4020/graphql",
+    uri: "https://collinargo.com:4020/graphql",
 });
 
   // Create a WebSocket link:
