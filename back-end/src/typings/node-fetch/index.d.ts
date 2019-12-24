@@ -1,4 +1,4 @@
-declare module 'node-fetch' {
-    const fetch: GlobalFetch['fetch'];
-    export default fetch;
-}
+// declare module 'node-fetch' {
+//     const fetch: GlobalFetch['fetch'];
+//     export default fetch;
+// }
